@@ -2,6 +2,8 @@
 
 [Source of inspiration](https://github.com/jeffreytse/jekyll-spaceship/blob/master/README.md)
 
+This **word** is bold. This <em>word</em> is italic.
+
 #### Cell Markdown
 
 Sometimes we may need some abundant content (e.g., mathjax, image, video) in Markdown table  
