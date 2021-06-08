@@ -8,7 +8,7 @@
 | Couchbase  data read failure  | blablablabla | :warning: Warning | 10m |
 | Couchbase data write failure  | blablablabla | :warning: Warning | 10m |
 | Couchbase item commit failure | bla bla bla | :warning: Warning | 5m |
-| Couchbase misses | blabla | Warning | 10m |
+| Couchbase misses | blabla | :fire: Critical | 10m |
 | Couchbase unrecoverable OOMs | | | |
 | Couchbase used memory | | | |
 | Couchbase data read failure | | | |
