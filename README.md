@@ -2,7 +2,7 @@
 
 [Source of inspiration](https://github.com/jeffreytse/jekyll-spaceship/blob/master/README.md)
 
-This **word** is bold. This <em>word</em> is italic.
+This **word** is bold. This <em>word</em> is italic. :warning:
 
 #### Cell Markdown
 
