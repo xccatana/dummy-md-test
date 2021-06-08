@@ -9,10 +9,10 @@
 | Couchbase data write failure  | blablablabla | :warning: Warning | 10m |
 | Couchbase item commit failure | bla bla bla | :warning: Warning | 5m |
 | Couchbase misses | blabla | :fire: Critical | 10m |
-| Couchbase unrecoverable OOMs | | | |
-| Couchbase used memory | | | |
-| Couchbase data read failure | | | |
-| Couchbase data write failure   | | | |
+| Couchbase unrecoverable OOMs | blablaba | :fire: Critical | |
+| Couchbase used memory | | :warning: Warning | |
+| Couchbase data read failure | | :warning: Warning | |
+| Couchbase data write failure   | | :fire: Critical | |
 | Couchbase item commit failure   | | | |
 | Couchbase misses   | | | |
 | Couchbase used memory   | | | |
