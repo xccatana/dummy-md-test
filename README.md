@@ -22,17 +22,18 @@ Therefore, here we also make markown syntax possible inside a cell.
 ```
 Test
 
-| :                   MathJax \|\| Image                 : |||
-| :------------ | :-------- | :----------------------------- |
-| Apple         | : Apple : | Apple                          \
-| Banana        | Banana    | Banana                         \
-| Orange        | Orange    | Orange                         |
-| :     Rowspan is 4     : || :        How's it?           : |
-| ^^     A. Peach          ||    1. ![example][cell-image]   |
-| ^^     B. Orange         || ^^ 2. $I = \int \rho R^{2} dV$ |
-| ^^     C. Banana         || **It's OK!**                   |
+{:color-style: style="background: black;"}
+{:color-style: style="color: white;"}
+{:text-style: style="font-weight: 800; text-decoration: underline;"}
 
-[cell-image]: https://jekyllrb.com/img/octojekyll.png "An exemplary image"
+|:             Here's an Inline Attribute Lists example                :||||
+| ------- | ------------------ | -------------------- | ------------------ |
+|:       :|:  <div style="color: red;"> &lt; Normal HTML Block > </div> :|||
+| ^^      |   Red    {: .cls style="background: orange" }                |||
+| ^^ IALs |   Green  {: #id style="background: green; color: white" }    |||
+| ^^      |   Blue   {: style="background: blue; color: white" }         |||
+| ^^      |   Black  {: color-style text-style }                         |||
+
 
 Code above would be parsed as:
 
