@@ -6,16 +6,13 @@ on:
 jobs:
   test-secrets:
     runs-on: ubuntu-latest
+    environment: dev
     steps:
-      - name: Check secrets are present
+      - name: Check secrets
         env:
           VAULT_CI_ROLE_ID: ${{ secrets.VAULT_CI_ROLE_ID }}
           VAULT_CI_SECRET_ID: ${{ secrets.VAULT_CI_SECRET_ID }}
         run: |
           [ -n "$VAULT_CI_ROLE_ID" ] || (echo "VAULT_CI_ROLE_ID is missing" && exit 1)
           [ -n "$VAULT_CI_SECRET_ID" ] || (echo "VAULT_CI_SECRET_ID is missing" && exit 1)
-
-          # Safe output (no secret values)
-          echo "VAULT_CI_ROLE_ID is set (length: ${#VAULT_CI_ROLE_ID})"
-          echo "VAULT_CI_SECRET_ID is set (length: ${#VAULT_CI_SECRET_ID})"
-          echo "Secrets wiring works."
+          echo "OK: both secrets are available"
