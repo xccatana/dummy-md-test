@@ -20,6 +20,7 @@ jobs:
           VAULT_ADDR: https://vault-amer.adobe.net
           VAULT_NAMESPACE: dx_primetime_authentication
         run: |
+          echo {{ secrets.dev.BRIGHTDATA_ACCOUNT_ID_DEV }}
           TOKEN=$(curl -s \
             -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
             "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=vault" \
