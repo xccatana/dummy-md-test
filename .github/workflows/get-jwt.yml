@@ -11,6 +11,6 @@ jobs:
     steps:
       - name: Login to Vault using JWT
         env:
-          CERTIFICATE_BASE64: ${{ secrets.dev.BRIGHTDATA_ACCOUNT_ID_DEV }}
+          CERTIFICATE_BASE64: ${{ secrets.BRIGHTDATA_ACCOUNT_ID_DEV }}
         run: |
           echo $CERTIFICATE_BASE64
