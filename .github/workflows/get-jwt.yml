@@ -1,16 +1,21 @@
-name: test-vault-jwt
-on: workflow_dispatch
+name: Test Secrets
 
-permissions:
-  id-token: write
-  contents: read
+on:
+  workflow_dispatch:
 
 jobs:
-  test:
+  test-secrets:
     runs-on: ubuntu-latest
     steps:
-      - name: Login to Vault using JWT
+      - name: Check secrets are present
         env:
-          CERTIFICATE_BASE64: ${{ secrets.BRIGHTDATA_ACCOUNT_ID_DEV }}
+          VAULT_CI_ROLE_ID: ${{ secrets.VAULT_CI_ROLE_ID }}
+          VAULT_CI_SECRET_ID: ${{ secrets.VAULT_CI_SECRET_ID }}
         run: |
-          echo $CERTIFICATE_BASE64
+          [ -n "$VAULT_CI_ROLE_ID" ] || (echo "VAULT_CI_ROLE_ID is missing" && exit 1)
+          [ -n "$VAULT_CI_SECRET_ID" ] || (echo "VAULT_CI_SECRET_ID is missing" && exit 1)
+
+          # Safe output (no secret values)
+          echo "VAULT_CI_ROLE_ID is set (length: ${#VAULT_CI_ROLE_ID})"
+          echo "VAULT_CI_SECRET_ID is set (length: ${#VAULT_CI_SECRET_ID})"
+          echo "Secrets wiring works."
