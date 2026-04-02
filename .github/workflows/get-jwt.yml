@@ -1,4 +1,4 @@
-name: get-jwt
+name: test-vault-jwt
 on:
   workflow_dispatch
 
@@ -7,17 +7,20 @@ permissions:
   contents: read
 
 jobs:
-  jwt:
+  test:
     runs-on: ubuntu-latest
     steps:
-      - name: Get OIDC token
+      - name: Login to Vault using JWT
         run: |
-          echo "Requesting OIDC token..."
+          echo "Getting GitHub OIDC token..."
 
           TOKEN=$(curl -s \
             -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
             "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=vault" \
             | jq -r '.value')
 
-          echo "JWT:"
-          echo "$TOKEN"
+          echo "Logging into Vault..."
+
+          vault write auth/jwt/login \
+            role=vault-jwt-access \
+            jwt="$TOKEN"
