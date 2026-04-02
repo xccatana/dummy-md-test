@@ -11,7 +11,6 @@ jobs:
     steps:
       - name: Login to Vault using JWT
         env:
-          VAULT_ADDR: https://vault-amer.adobe.net
-          VAULT_NAMESPACE: dx_primetime_authentication
+          CERTIFICATE_BASE64: ${{ secrets.dev.BRIGHTDATA_ACCOUNT_ID_DEV }}
         run: |
-          echo ${{ secrets.dev.BRIGHTDATA_ACCOUNT_ID_DEV }}
+          echo $CERTIFICATE_BASE64
