@@ -1,6 +1,5 @@
 name: test-vault-jwt
-on:
-  workflow_dispatch
+on: workflow_dispatch
 
 permissions:
   id-token: write
@@ -10,16 +9,21 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Login to Vault using JWT
+      - name: Install Vault
         run: |
-          echo "Getting GitHub OIDC token..."
+          curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+          sudo apt-add-repository "deb https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+          sudo apt-get update && sudo apt-get install vault -y
 
+      - name: Login to Vault using JWT
+        env:
+          VAULT_ADDR: https://vault-amer.adobe.net
+          VAULT_NAMESPACE: dx_primetime_authentication
+        run: |
           TOKEN=$(curl -s \
             -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
             "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=vault" \
             | jq -r '.value')
-
-          echo "Logging into Vault..."
 
           vault write auth/jwt/login \
             role=vault-jwt-access \
